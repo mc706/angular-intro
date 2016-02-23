@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Directives</title>
+    <link rel="stylesheet" href="../assets/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/styles/base.css">
+    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script src="../assets/vendor/angular.min.js"></script>
+
+</head>
+<body class="example" id="directives">
+    <div class="container">
+        <div class="page-header">
+            <h1>Directives/Components</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12" ng-init="">
+                <div ng-controller="myController">
+                    <contact-card ng-repeat="contact in contacts"
+                                  contact="contact">
+                    </contact-card>
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <h3>directives/contact-card/contact-card.js</h3>
+                <pre class="prettyprint linenums" ng-non-bindable>
+angular.module('myApp')
+    .directive('contactCard', function(){
+        return {
+            restrict: "E",
+            replace: false,
+            transclude: false,
+            scope: {
+                contact: "="
+            },
+            templateUrl: "directives/contact-card/card.html"
+
+        }
+    })
+                </pre>
+            </div>
+            <div class="col-md-4">
+                <h3>directives/contact-card/card.html</h3>
+                <pre class="prettyprint linenums" ng-non-bindable>
+&lt;div&gt;
+    &lt;strong&gt;{{contact.name}}&lt;/strong&gt;
+    &lt;span ng-show='contact.phone'&gt;
+        {{contact.phone}}
+    &lt;/span&gt;
+    &lt;span ng-show='contact.email'&gt;
+        {{contact.email}}
+    &lt;/span&gt;
+&lt;/div&gt;
+                </pre>
+            </div>
+            <div class="col-md-4">
+                <h3>View</h3>
+                <pre class="prettyprint linenums" ng-non-bindable>
+&lt;div ng-controller="myController"&gt;
+    &lt;contact-card ng-repeat="contact in contacts"
+                  contact="contact"&gt;
+    &lt;/contact-card&gt;
+&lt;/div&gt;
+                </pre>
+
+                <br>
+
+                <h3>Controller</h3>
+                 <pre class="prettyprint linenums" ng-non-bindable>
+angular.module('myApp')
+    .controller('myController', function($scope){
+        $scope.contacts = [
+           {name:'Bill',phone:'123',email:''},
+           {name:'Bob',phone:'456',email:'bob@test.com'},
+           {name:'Joe',phone:'',email:'joe@test.com'}
+        ];
+    })
+                </pre>
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="../assets/vendor/run_prettify.js"></script>
+<script>
+var app = angular.module('myApp', [])
+    .directive('contactCard', function () {
+            return {
+                restrict: "E",
+                scope: {
+                    contact: "="
+                },
+                template: "<div><strong>{{contact.name}}</strong><br><span ng-show='contact.phone'>{{contact.phone}}<br></span><span ng-show='contact.email'>{{contact.email}}</span></div><br>"
+            }
+        })
+    .controller('myController', function ($scope) {
+        $scope.contacts = [
+            {name:'Bill',phone:'123',email:''},
+            {name:'Bob',phone:'456',email:'bob@test.com'},
+            {name:'Joe',phone:'',email:'joe@test.com'}
+        ];
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>Service</title>
+    <link rel="stylesheet" href="../assets/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/styles/base.css">
+    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script src="../assets/vendor/angular.min.js"></script>
+
+</head>
+<body class="example" id="services">
+    <div class="container">
+        <div class="page-header">
+            <h1>Services</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>services/contact.js</h3>
+                <pre class="prettyprint linenums" ng-non-bindable>
+angular.module('myApp')
+    .service('ContactService', function ($http, $q) {
+        return {
+            listContacts: function () {
+                var defer = $q.defer();
+                $http({
+                    method: "GET",
+                    url: "/apis/contacts/"
+                }).success(function (data, status) {
+                    defer.resolve(data);
+                }).error(function (data, status) {
+                    defer.reject(status);
+                });
+                return defer.promise;
+            },
+            getContact: function (id) {
+                var defer = $q.defer();
+                $http({
+                    method: "GET",
+                    url: "/apis/contacts/" + id
+                }).success(function (data, status) {
+                    defer.resolve(data);
+                }).error(function (data, status) {
+                    defer.reject(status);
+                });
+                return defer.promise;
+            },
+            createContact: function (data) {
+                var defer = $q.defer();
+                $http({
+                    method: "POST",
+                    data: data
+                    url: "/apis/contacts/"
+                }).success(function (data, status) {
+                    defer.resolve(data);
+                }).error(function (data, status) {
+                    defer.reject(status);
+                });
+                return defer.promise;
+            },
+            updateContact: function (id, data) {
+                var defer = $q.defer();
+                $http({
+                    method: "PUT",
+                    data: data
+                    url: "/apis/contacts/" + id
+                }).success(function (data, status) {
+                    defer.resolve(data);
+                }).error(function (data, status) {
+                    defer.reject(status);
+                });
+                return defer.promise;
+            }
+            deleteContact: function (id) {
+                var defer = $q.defer();
+                $http({
+                    method: "DELETE",
+                    url: "/apis/contacts/" + id
+                }).success(function (data, status) {
+                    defer.resolve(data);
+                }).error(function (data, status) {
+                    defer.reject(status);
+                });
+                return defer.promise;
+            }
+        }
+    });
+                </pre>
+            </div>
+            <div class="col-md-6">
+                <h3>controllers/myController.js</h3>
+                <pre class="prettyprint linenums" ng-non-bindable>
+angular.module('myApp')
+    .controller('MyController', function ($scope, ContactService) {
+        $scope.contacts = ContactService.listContacts();
+
+        $scope.deleteContact = function(id) {
+            ContactService.deleteContact(id).then(function() {
+                $scope.contacts = ContactService.listContacts();
+            });
+        }
+    });
+                </pre>
+            </div>
+        </div>
+    </div>
+
+<script src="../assets/vendor/run_prettify.js"></script>
+</body>
+</html>

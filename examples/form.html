@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link rel="stylesheet" href="../assets/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/styles/base.css">
+    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script src="../assets/vendor/angular.min.js"></script>
+
+</head>
+<body class="example">
+    <div class="container">
+        <div class="page-header">
+            <h1>Two Way Data Binding in Forms</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form novalidate ng-init="form = {};">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" ng-model="form.name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" class="form-control" ng-model="form.phone">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control" ng-model="form.email">
+                    </div>
+                </form>
+
+                <pre>
+$scope.form = {{form}}
+                </pre>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <pre class="prettyprint linenums" ng-non-bindable>
+&lt;html ng-app&gt;
+    &lt;head&gt;
+        &lt;script src='angular.js'&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;form&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Name&lt;/label&gt;
+                &lt;input type="text" class="form-control" ng-model="form.name"&gt;
+            &lt;/div&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Phone&lt;/label&gt;
+                &lt;input type="text" class="form-control" ng-model="form.phone"&gt;
+            &lt;/div&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Email&lt;/label&gt;
+                &lt;input type="text" class="form-control" ng-model="form.email"&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                </pre>
+            </div>
+        </div>
+    </div>
+
+<script src="../assets/vendor/run_prettify.js"></script>
+</body>
+</html>

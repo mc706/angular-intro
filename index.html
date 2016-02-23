@@ -355,7 +355,36 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   font-weight: bold;
 }
 
+img {
+    width: 100%;
+}
 
+pre.prettyprint {
+    font-size: 100%;
+}
+
+body.example {
+    font-size: 1.5em;
+}
+
+#slide-1 #intro-to-angularjs {
+    margin-top: 0;
+}
+
+.data-table {
+    font-size: 50%;
+}
+
+#directives {
+    font-size: 1em;
+}
+#services {
+    font-size: 1em;
+}
+
+li.L0, li.L1, li.L2, li.L3,
+li.L5, li.L6, li.L7, li.L8
+{ list-style-type: decimal !important }
   </style>
 </head>
 <body>
@@ -364,34 +393,187 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </div>
 
   <div class="slide" id="slide-1">
-    <section class="slide-content"><h1 id="intro-to-angularjs">Intro to AngularJS</h1>
-<h2 id="a-look-into-the-superheroic-framework">A look into the superheroic framework</h2>
+    <section class="slide-content"><p><img src="assets/images/AngularJS-large.png" alt="AngularJS"></p>
+<h1 id="intro-to-angularjs">Intro to AngularJS</h1>
 </section>
   </div>
   <div class="slide hidden" id="slide-2">
     <section class="slide-content"><h3 id="what-we-will-cover">What we will cover</h3>
 <p>This presentation will cover:</p>
 <ul>
-<li>What is angular?</li>
-<li>Why we choose it at for MyAccount</li>
-<li>A few development paradigms we use.</li>
-<li>Pros and Cons</li>
+<li>What is AngularJS?</li>
+<li>Why we use Angular for MyAccount.</li>
+<li>Development Paradigms</li>
 </ul>
 <p><strong>Note</strong>: This presentation will only cover AngularJS v1.x  Angular2 is currently in beta.</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-3">
     <section class="slide-content"><h3 id="what-is-angularjs-">What is AngularJS?</h3>
-<p>AngularJS is a frontend javascript framework, maintained by Google, developed to address
+<p>AngularJS is a frontend javascript framework released in 2009, maintained by Google, developed to address
 many of the challenges encountered in developing single-page web applications.</p>
 <p>It lends itself to both MVC (Model-View-Controller) and MVVM (Model-View-ViewModel) architectures.</p>
+<p>It is built from the ground up, without a large dependency chain. (Does not require jquery)</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-4">
     <section class="slide-content"><h3 id="key-features">Key Features</h3>
+<ul>
+<li>Strong Separation of Concerns</li>
+<li>Two way data binding</li>
+<li>Extending HTML with Directives (and Components)</li>
+<li>Modular Structure</li>
+<li>Dependency Injection</li>
+<li>Helpful Error Messaging</li>
+<li>Testing Framework</li>
+</ul>
 </section>
   </div>
-  <div class="slide hidden author-slide" id="slide-5">
+  <div class="slide hidden" id="slide-5">
+    <section class="slide-content"><h3 id="browser-support">Browser Support</h3>
+<p><img src="assets/images/angular_browser.png" alt="browser_support"></p>
+<p>Angular 1.3+ dropped explicit support for IE8.</p>
+<p>Angular2.x will have the same browser support.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><h3 id="separation-of-concerns">Separation of Concerns</h3>
+<ul>
+<li>Controllers - Controls Scope and business logic</li>
+<li>Services - Data layer</li>
+<li>Directives/Components - Reusable, composable, chunks</li>
+<li>Filters - Data filtering and manipulation</li>
+<li>Templates - Display</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-7">
+    <section class="slide-content"><h3 id="two-way-data-binding">Two Way Data Binding</h3>
+<p>One of the core features of angular is two-way-data-binding. It allows you bind data in a view/template to a controller.</p>
+<p><a href="examples/binding.html" target="_blank">Example</a></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><h3 id="directives-components">Directives/Components</h3>
+<p>Directives are markers that allow developers to tie functionality to HTML. </p>
+<p>Can be an attribute, a class, or an element.</p>
+<p>Components are a subset of directives that include a template and their own scope.</p>
+<p><a href="examples/directives.html" target="_blank">Directives/Components Example</a></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><h3 id="services">Services</h3>
+<p>Services are the data layer of AngularJS. </p>
+<p><a href="examples/service.html" target="_blank">Service Example</a></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-10">
+    <section class="slide-content"><h3 id="why-we-chose-it-for-myaccount">Why We Chose it for MyAccount</h3>
+<p>Bake-off between:</p>
+<ul>
+<li>BackboneJS</li>
+<li>EmberJS</li>
+<li>AngularJS</li>
+<li>React/Redux</li>
+</ul>
+<p>on the Following Criteria:</p>
+<ul>
+<li>Speed of Development</li>
+<li>Community Backing</li>
+<li>Upgrade Path</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><h3 id="the-bake-off-results">The Bake-off Results</h3>
+<table class="table table-bordered data-table">
+    <thead>
+        <tr>
+        <th>Framework</th>
+        <th>Pros</th>
+        <th>Cons</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>BackboneJS</td>
+            <td><ul>
+                <li> Team Familiarity </li>
+                <li> Customizable  </li>
+            </ul></td>
+            <td><ul>
+                <li>Needed a lot of code</li>
+            </ul></td>
+        </tr>
+        <tr>
+            <td>AngularJS</td>
+            <td><ul>
+                <li>Large Community</li>
+                <li>Strong Paradigms</li>
+                <li>Complete Solution</li>
+                <li>Speed</li>
+            </ul></td>
+            <td><ul>
+                <li>Learning Curve</li>
+                <li>New Testing Framework</li>
+            </ul></td>
+        </tr>
+        <tr>
+            <td>EmberJS</td>
+            <td><ul>
+                <li>Minimal coding to get running</li>
+                <li>Clear Migration Path</li>
+            </ul></td>
+            <td><ul>
+                <li>Learning Curve</li>
+                <li>Lot of Overrides</li>
+                <li>A lot of middleware reconfiguration</li>
+            </ul></td>
+        </tr>
+        <tr>
+            <td>React/Redux</td>
+            <td><ul>
+                <li>Fast</li>
+                <li>Easily Tested (state tree)</li>
+            </ul></td>
+            <td><ul>
+                <li>Steep Learning Curve</li>
+                <li>Less Stable Community</li>
+            </ul></td>
+        </tr>
+    </tbody>
+</table></section>
+  </div>
+  <div class="slide hidden" id="slide-12">
+    <section class="slide-content"><h3 id="post-bake-off-results">Post Bake-off Results</h3>
+<p>A list of metrics since we have moved to angular:</p>
+<ul>
+<li>Non-Angular Team members had code committed within a day</li>
+<li>Rewrote 2 months of work in 4 days</li>
+<li>Significantly Reduced the size of the code base</li>
+<li>Separated frontend and middleware into separate repos</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-13">
+    <section class="slide-content"><h3 id="structure">Structure</h3>
+<p>We have adopted the following stucture for our MyAcccount.</p>
+<pre><code>
+</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-14">
+    <section class="slide-content"><h3 id="tools">Tools</h3>
+<ul>
+<li>Karma - in browser testing</li>
+<li>Jasmine - testing framework</li>
+<li>ng-html2js - preloading templates</li>
+<li>gulp - build tool</li>
+<li>ngDocs - angular specific generated documentation <a href="https://github.comcast.com/pages/Xfinity/MyAccountWeb-FE/#/api/my_account">Our Docs</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden author-slide" id="slide-15">
     <section class="slide-content"><div class="author">
   <h1 class="name">Ryan McDevitt</h1>
     <h3 class="twitter">
