@@ -385,6 +385,10 @@ body.example {
 li.L0, li.L1, li.L2, li.L3,
 li.L5, li.L6, li.L7, li.L8
 { list-style-type: decimal !important }
+
+#slide-13 pre {
+    font-size: 50%;
+}
   </style>
 </head>
 <body>
@@ -548,7 +552,7 @@ many of the challenges encountered in developing single-page web applications.</
     <section class="slide-content"><h3 id="post-bake-off-results">Post Bake-off Results</h3>
 <p>A list of metrics since we have moved to angular:</p>
 <ul>
-<li>Non-Angular Team members had code committed within a day</li>
+<li>All Non-Angular Team members had code committed within a day</li>
 <li>Rewrote 2 months of work in 4 days</li>
 <li>Significantly Reduced the size of the code base</li>
 <li>Separated frontend and middleware into separate repos</li>
@@ -557,12 +561,39 @@ many of the challenges encountered in developing single-page web applications.</
   </div>
   <div class="slide hidden" id="slide-13">
     <section class="slide-content"><h3 id="structure">Structure</h3>
-<p>We have adopted the following stucture for our MyAcccount.</p>
-<pre><code>
-</code></pre>
+<p>We have adopted the following structure for our MyAccount.</p>
+<pre><code>app/
+ - config/
+    - routes.js
+    - interceptors.js
+ - constants/
+    - events.js
+    - states.js
+ - controllers/
+    - globalController.js
+    ...
+ - directives/
+    - directive-name/
+        - directive.js
+        - directive-template.html
+    ...
+ - filters/
+    ...
+ - services/
+    ...
+ - templates/
+    ...
+ - app.js</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-14">
+    <section class="slide-content"><h3 id="globalcontroller">GlobalController</h3>
+<p>We adopted a GlobalController Pattern that sits at the very top level of our application.</p>
+<p>Since all controllers inside of it will inherit <code>$scope</code> from it, it allows us a single layer 
+to handle data and application state.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-15">
     <section class="slide-content"><h3 id="tools">Tools</h3>
 <ul>
 <li>Karma - in browser testing</li>
@@ -571,15 +602,6 @@ many of the challenges encountered in developing single-page web applications.</
 <li>gulp - build tool</li>
 <li>ngDocs - angular specific generated documentation <a href="https://github.comcast.com/pages/Xfinity/MyAccountWeb-FE/#/api/my_account">Our Docs</a></li>
 </ul>
-</section>
-  </div>
-  <div class="slide hidden author-slide" id="slide-15">
-    <section class="slide-content"><div class="author">
-  <h1 class="name">Ryan McDevitt</h1>
-    <h3 class="twitter">
-      <a href="http://twitter.com/@mc706">@mc706</a>
-    </h3>
-</div>
 </section>
   </div>
 

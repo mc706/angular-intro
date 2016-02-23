@@ -1,7 +1,4 @@
 title: Intro to Angular
-author:
-    name: Ryan McDevitt
-    twitter: mc706
 output: index.html
 controls: true
 style: assets/styles/styles.css
@@ -177,7 +174,7 @@ on the Following Criteria:
 ### Post Bake-off Results
 
 A list of metrics since we have moved to angular:
-* Non-Angular Team members had code committed within a day
+* All Non-Angular Team members had code committed within a day
 * Rewrote 2 months of work in 4 days
 * Significantly Reduced the size of the code base
 * Separated frontend and middleware into separate repos
@@ -185,10 +182,39 @@ A list of metrics since we have moved to angular:
 --
 
 ### Structure
-We have adopted the following stucture for our MyAcccount.
+We have adopted the following structure for our MyAccount.
+```
+app/
+ - config/
+    - routes.js
+    - interceptors.js
+ - constants/
+    - events.js
+    - states.js
+ - controllers/
+    - globalController.js
+    ...
+ - directives/
+    - directive-name/
+        - directive.js
+        - directive-template.html
+    ...
+ - filters/
+    ...
+ - services/
+    ...
+ - templates/
+    ...
+ - app.js
 ```
 
-```
+--
+### GlobalController
+
+We adopted a GlobalController Pattern that sits at the very top level of our application.
+
+Since all controllers inside of it will inherit `$scope` from it, it allows us a single layer 
+to handle data and application state.
 
 --
 ### Tools
